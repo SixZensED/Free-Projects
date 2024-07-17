@@ -3,7 +3,7 @@ local fastForward = state and state:FindFirstChild("FastForward")
 
 if fastForward then
     fastForward.Value = 0
-    local metaTable = {
+    local instant = {
         __newindex = function(_, key, value)
             if key == "Value" then
                 fastForward.Changed:Wait()
@@ -13,5 +13,5 @@ if fastForward then
             end
         end
       }
-    setmetatable(fastForward, metaTable)
+    setmetatable(fastForward, instant)
 end
